@@ -1,8 +1,17 @@
 let currentPlayer = 'X';
 let nextPlayer = 'O';
 
+let vitoriasPlayerX = 0;
+let vitoriasPlayerO = 0;
+
+let playerSelections = [];
 let playerXSelections = [];
 let playerOSelections = [];
+
+const cells = document.querySelectorAll('td');
+let playerAtual = document.getElementById("currentPlayer");
+let countPlayerX = document.getElementById("countPlayerX");
+let countPlayerO = document.getElementById("countPlayerO");
 
 const winningCombinations = [
     [1, 2, 3],
@@ -16,12 +25,89 @@ const winningCombinations = [
 ];
 
 const handleClick = function(event){
+
     const cell = event.target;
-    console.log(cell.id);
+
+    cell.innerHTML = currentPlayer;
+
+    if (currentPlayer === 'X' ) {
+        playerSelections = playerXSelections;
+        nextPlayer = 'O';
+    } else {
+        playerSelections = playerOSelections;
+        nextPlayer = 'X';
+    }
+    
+    playerSelections.push(Number(cell.id));
+
+    playerAtual.innerText = `O jogador é atual é: ${currentPlayer}`;
+
+    if (checarGanhador()){
+        alert('Player ' + currentPlayer + ' wins');
+        contarWins();
+        resetarJogo();
+    }
+
+    countPlayerX.innerText = `${vitoriasPlayerX}`;
+    countPlayerO.innerText = `${vitoriasPlayerO}`;
+
+    if (checarEmpate()){
+        alert('Jogo Empatado!');
+        resetarJogo();
+    }
+
+    currentPlayer = nextPlayer;
+    
+   
 }
 
-const cells = document.querySelectorAll('td');
 
 for (let i = 0; i < cells.length; i++){
     cells[i].addEventListener('click', handleClick);
 }
+
+function checarGanhador() {
+    
+    for ( let i = 0; i < winningCombinations.length; i++){ 
+        let ValorCombinacao = 0;
+        let combinac = winningCombinations[i];
+        
+        for ( let cell in combinac){
+
+            if (playerSelections.includes(combinac[cell])){
+                ValorCombinacao++;
+            } else {
+                break;
+            }
+            if (ValorCombinacao === winningCombinations[i].length ){
+                return true;
+            } 
+        }
+   
+    }return false;
+}
+
+function checarEmpate(){
+    return (playerOSelections.length + playerXSelections.length) >= cells.length;
+}
+
+function resetarJogo() {
+
+    playerAtual.innerText = '';
+    
+    playerXSelections = new Array();
+    playerOSelections = new Array();
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].innerHTML = '';
+    }
+    
+ }
+
+ function contarWins(){
+     if (currentPlayer === 'X'){
+         vitoriasPlayerX++;
+     } else if (currentPlayer === 'O'){
+         vitoriasPlayerO++;
+     }
+ }
+

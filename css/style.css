@@ -1,17 +1,110 @@
+body{
+  background-color: rgba(248, 192, 88, 0.952);
+}
 
+.header{
+  width: 100%;
+  height: 120px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__h1{
+  font-size: 2.5em;
+  font-weight: 700;
+}
 
-td {
+.main{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+  td {
     border: 1px solid blue;
     width: 100px;
     height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
   }
   
   td:hover {
     background: orange;
+    cursor: pointer;
   }
   
   table {
+    margin: 10px auto; 
     border: 1px solid green;
     padding: 2px;
     border-collapse: unset;
+    display: inline-flex;
+    background-color: rgb(206, 206, 206);
+  }
+  tbody{
+    display: inherit;
+  }
+  .playerAtual{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+  }
+  .playerX, .playerO{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+  }
+  .playerX h4, .playerO h4{
+    font-weight: bold;
+  }
+
+  @media screen and (min-width: 768px){
+    .main{
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    td {
+      width: 110px;
+      height: 110px;  
+    }
+    .playerX, .playerO{
+      width: 50%;
+    }
+
+  }
+  @media screen and (min-width: 1024px){
+    .header{
+      height: 160px;
+    }
+    .header__h1{
+      font-size: 4em;
+    }
+    table {
+      margin-top: 10px;
+    }
+    td {
+      width: 160px;
+      height: 160px;
+    }
+    .playerX{
+      float: left;
+      position: absolute;
+      left: 0;
+      top:50%
+    } 
+    .playerO{
+      float: right;
+      position: absolute;
+      right: 0;
+      top: 50%
+    }
   }
