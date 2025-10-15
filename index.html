@@ -1,52 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Velha - Clássico Nostálgico</title>
+    <meta
+      name="description"
+      content="Jogo da Velha com design retrô e nostálgico inspirado em jogos de tabuleiro clássicos"
+    />
 
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
-        <h1 class="header header__h1">Jogo da Velha</h1>
+      <h1 class="header__title">🎮 Jogo da Velha 🎮</h1>
+      <p class="header__subtitle">Clássico Nostálgico</p>
     </header>
-    <main class="main">
-        <section>
-            <table>
-                <tbody>
-                    <tr>
-                        <td id="1"></td>
-                        <td id="2"></td>
-                        <td id="3"></td>
-                    </tr>
-                    <tr>
-                        <td id="4"></td>
-                        <td id="5"></td>
-                        <td id="6"></td>
-                    </tr>
-                    <tr>
-                        <td id="7"></td>
-                        <td id="8"></td>
-                        <td id="9"></td>
-                    </tr>
-                </tbody>
-            </table>
+
+    <main class="main-container">
+      <!-- Info Game Section -->
+      <section class="info-game-section">
+        <!-- Current Player Section -->
+        <section class="current-player-section">
+          <div class="current-player-info">
+            <h2 id="currentPlayer" class="current-player-text"></h2>
+          </div>
         </section>
-        <div class="playerAtual">
-            <h3 id="currentPlayer"></h3>
+
+        <!-- Score Section -->
+        <section class="score-section">
+          <div class="player-score player-x">
+            <h3 class="player-label">🔵 Player 1 (X)</h3>
+            <p class="player-score-value" id="countPlayerX">0</p>
+            <p class="player-score-label">Vitórias</p>
+          </div>
+          <div class="player-score player-o">
+            <h3 class="player-label">⭕ Player 2 (O)</h3>
+            <p class="player-score-value" id="countPlayerO">0</p>
+            <p class="player-score-label">Vitórias</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- Game Board Section -->
+      <section class="game-section">
+        <div class="game-board-wrapper">
+          <table class="game-board" role="grid">
+            <tbody class="game-columns">
+              <tr>
+                <td class="game-cell" id="1" role="gridcell"></td>
+                <td class="game-cell" id="2" role="gridcell"></td>
+                <td class="game-cell" id="3" role="gridcell"></td>
+              </tr>
+              <tr>
+                <td class="game-cell" id="4" role="gridcell"></td>
+                <td class="game-cell" id="5" role="gridcell"></td>
+                <td class="game-cell" id="6" role="gridcell"></td>
+              </tr>
+              <tr>
+                <td class="game-cell" id="7" role="gridcell"></td>
+                <td class="game-cell" id="8" role="gridcell"></td>
+                <td class="game-cell" id="9" role="gridcell"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="playerX">
-            <h4>Vitórias: Player 1 ( X )</h4>
-            <p id="countPlayerX"></p>
-        </div>
-        <div class="playerO">
-            <h4>Vitórias: Player 2 ( O )</h4>
-            <p id="countPlayerO"></p>
-        </div>
+      </section>
+
+      <!-- Reset Button -->
+      <section class="button-section">
+        <button class="reset-button" onclick="location.reload()" label="Novo Jogo">
+          🔄 Novo Jogo
+        </button>
+      </section>
     </main>
-        <script src="./script/script.js"></script>
-</body>
+
+    <footer class="footer">
+      <p>&copy; 2025 - Jogo da Velha - Bruno Guedes</p>
+    </footer>
+
+    <script src="./script/script.js"></script>
+  </body>
 </html>
