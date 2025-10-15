@@ -90,4 +90,4 @@ O design foi inspirado em:
 
 ---
 
-**Desenvolvido com B em 2024**
+**Desenvolvido por Bruno Guedes em 2021 e aprimorado em 2025**
